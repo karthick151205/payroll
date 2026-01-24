@@ -359,3 +359,15 @@
 .close-btn:hover {
   color: #ff8a00;
 }
+
+.error {
+  color: #ff3d00;
+  font-size: 12px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.terms span {
+  font-size: 13px;
+  opacity: 0.8;
+}
