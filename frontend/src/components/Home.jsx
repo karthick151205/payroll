@@ -1,100 +1,25 @@
 import React, { useState } from "react";
 import "./Home.css";
 
-// Advanced Signup Modal Component
-const SignupModal = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Registration Successful!");
-    onClose();
-  };
+const SignupModal = ({ open, onClose }) => {
+  const [form, setForm] = useState({ fullName: "", companyEmail: "" });
+  if (!open) return null;
 
   return (
-    <div className="signup-modal" onClick={onClose}>
-      <div className="signup-modal-content" onClick={(e) => e.stopPropagation()}>
-        <span className="close-btn" onClick={onClose}>&times;</span>
-        <h2>Advanced Registration</h2>
-        <form onSubmit={handleSubmit}>
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+        <h2 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Get started</h2>
+        <p style={{ color: '#64748b', marginBottom: '2rem' }}>Join 2,000+ companies scaling with MyAcc.</p>
+        
+        <form onSubmit={(e) => { e.preventDefault(); onClose(); }}>
+          <label style={{ fontWeight: 600, fontSize: '0.9rem' }}>Full Name</label>
+          <input placeholder="Jane Doe" required />
 
-          {/* Full Name */}
-          <label htmlFor="fullName">Full Name</label>
-          <input
-            type="text"
-            id="fullName"
-            name="fullName"
-            placeholder="John Doe"
-            required
-          />
+          <label style={{ fontWeight: 600, fontSize: '0.9rem' }}>Work Email</label>
+          <input type="email" placeholder="jane@company.com" required />
 
-          {/* Company Name */}
-          <label htmlFor="companyName">Company Name</label>
-          <input
-            type="text"
-            id="companyName"
-            name="companyName"
-            placeholder="Your Company Name"
-            required
-          />
-
-          {/* Company Email */}
-          <label htmlFor="companyEmail">Company Email</label>
-          <input
-            type="email"
-            id="companyEmail"
-            name="companyEmail"
-            placeholder="company@example.com"
-            required
-          />
-
-          {/* Password */}
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="********"
-            required
-          />
-
-          {/* Phone Number */}
-          <label htmlFor="phone">Phone Number</label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            placeholder="+91 9876543210"
-            required
-          />
-
-          {/* Industry Type */}
-          <label htmlFor="industry">Industry Type</label>
-          <select id="industry" name="industry" required>
-            <option value="">Select Industry</option>
-            <option value="IT">IT / Software</option>
-            <option value="Finance">Finance</option>
-            <option value="Healthcare">Healthcare</option>
-            <option value="Education">Education</option>
-            <option value="Retail">Retail</option>
-            <option value="Other">Other</option>
-          </select>
-
-          {/* Company Size */}
-          <label htmlFor="companySize">Company Size</label>
-          <select id="companySize" name="companySize" required>
-            <option value="">Select Size</option>
-            <option value="1-10">1-10 Employees</option>
-            <option value="11-50">11-50 Employees</option>
-            <option value="51-200">51-200 Employees</option>
-            <option value="201-500">201-500 Employees</option>
-            <option value="500+">500+ Employees</option>
-          </select>
-
-
-          {/* Submit Button */}
-          <button type="submit" className="primary-btn neon-btn">
-            Register
+          <button className="btn-primary" style={{ width: '100%', padding: '1rem' }}>
+            Create Free Account
           </button>
         </form>
       </div>
@@ -103,109 +28,79 @@ const SignupModal = ({ isOpen, onClose }) => {
 };
 
 const Home = () => {
-  const [isSignupOpen, setIsSignupOpen] = useState(false);
+  const [signupOpen, setSignupOpen] = useState(false);
 
   return (
     <div className="home">
-      {/* NAVBAR */}
-      <header className="navbar">
-        <div className="logo neon-text">MyAcc</div>
-
-        <nav>
-          <ul className="nav-menu">
-            <li>Platform</li>
-            <li>Payroll</li>
-            <li>Employees</li>
-            <li>Contact</li>
-          </ul>
-        </nav>
-
+      <nav className="navbar">
+        <div className="logo">MyAcc<span>.</span></div>
+        <ul className="nav-menu">
+          <li>Platform</li>
+          <li>Solutions</li>
+          <li>Resources</li>
+        </ul>
         <div className="nav-actions">
-          <button className="nav-btn neon-btn" onClick={() => setIsSignupOpen(true)}>
-            Sign Up
-          </button>
-          <button className="nav-btn outline">Login</button>
+          <button className="btn-outline" style={{ marginRight: '1rem', border: 'none' }}>Login</button>
+          <button className="btn-primary" onClick={() => setSignupOpen(true)}>Join Now</button>
         </div>
-      </header>
+      </nav>
 
-      {/* HERO */}
-      <section className="hero-section">
-        <div className="hero-content">
-          <h1 className="neon-text">
-            Intelligent Payroll <br />
-            & Workforce Management
-          </h1>
-
+      <section className="hero">
+        <div className="hero-text">
+          <h1>Payroll that <br /><span style={{ color: '#6366f1' }}>just works.</span></h1>
           <p>
-            MyAcc is an advanced payroll automation platform designed to manage
-            employee records, salary structures, tax calculations, attendance,
-            and secure payroll processing for modern organizations.
+            Automate your back-office operations so you can focus on building 
+            your team. Compliant, fast, and remarkably simple.
           </p>
-
-          <div className="hero-tags">
-            <span>Payroll Automation</span>
-            <span>Employee Records</span>
-            <span>Salary Processing</span>
-            <span>Secure Access</span>
-          </div>
-
           <div className="hero-buttons">
-            <button className="primary-btn neon-btn">Start Free Trial</button>
-            <button className="secondary-btn neon-outline-btn">Request Demo</button>
+            <button className="btn-primary" onClick={() => setSignupOpen(true)}>Start Free Trial</button>
+            <button className="btn-outline">Book a Demo</button>
           </div>
         </div>
 
         <div className="hero-visual">
-          <div className="glow-shape floating"></div>
+          <div className="hero-card">
+            <div style={{ display: 'flex', gap: '12px', marginBottom: '2rem' }}>
+              <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#ff5f56' }}></div>
+              <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#ffbd2e' }}></div>
+              <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#27c93f' }}></div>
+            </div>
+            <h4 style={{ marginBottom: '1rem' }}>Monthly Overview</h4>
+            <div style={{ height: '150px', background: '#f1f5f9', borderRadius: '16px', display: 'flex', alignItems: 'flex-end', padding: '15px', gap: '10px' }}>
+              <div style={{ flex: 1, background: '#6366f1', height: '60%', borderRadius: '4px' }}></div>
+              <div style={{ flex: 1, background: '#6366f1', height: '85%', borderRadius: '4px' }}></div>
+              <div style={{ flex: 1, background: '#6366f1', height: '45%', borderRadius: '4px' }}></div>
+              <div style={{ flex: 1, background: '#6366f1', height: '70%', borderRadius: '4px' }}></div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* FEATURES */}
+      
+
       <section className="features">
-        <h2 className="neon-text">Why Choose MyAcc?</h2>
-
+        <h2>Everything you need to scale</h2>
         <div className="feature-grid">
-          <div className="feature-card neon-card">
-            <h3>Employee Lifecycle</h3>
-            <p>
-              Maintain complete employee profiles including designation,
-              department, joining date, and salary structure.
-            </p>
-          </div>
-
-          <div className="feature-card neon-card">
-            <h3>Payroll Accuracy</h3>
-            <p>
-              Automated salary calculation with allowances, deductions, tax,
-              PF, and net pay generation.
-            </p>
-          </div>
-
-          <div className="feature-card neon-card">
-            <h3>Secure Authentication</h3>
-            <p>
-              Role-based login system for Admin, HR, and Employees with secure
-              data isolation.
-            </p>
-          </div>
-
-          <div className="feature-card neon-card">
-            <h3>Reports & Insights</h3>
-            <p>
-              Generate monthly payroll reports, employee salary slips, and
-              financial summaries instantly.
-            </p>
-          </div>
+          {[
+            { icon: "⚡", title: "Instant Pay", desc: "Run payroll in 90 seconds flat." },
+            { icon: "🛡️", title: "Compliance", desc: "Automatic tax filings and reporting." },
+            { icon: "🌍", title: "Global", desc: "Support for teams in 50+ countries." },
+            { icon: "📊", title: "Insights", desc: "Real-time labor cost analytics." }
+          ].map((item, idx) => (
+            <div className="feature-card" key={idx}>
+              <div className="feature-icon">{item.icon}</div>
+              <h3>{item.title}</h3>
+              <p style={{ color: '#64748b', marginTop: '0.5rem' }}>{item.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="footer">
-        <p>© 2026 MyAcc — Smart Payroll, Smarter Workforce</p>
+      <footer style={{ textAlign: 'center', padding: '4rem', color: '#94a3b8', borderTop: '1px solid #f1f5f9' }}>
+        © 2026 MyAcc — The New Standard for Workforce Management.
       </footer>
 
-      {/* SIGNUP MODAL */}
-      <SignupModal isOpen={isSignupOpen} onClose={() => setIsSignupOpen(false)} />
+      <SignupModal open={signupOpen} onClose={() => setSignupOpen(false)} />
     </div>
   );
 };
