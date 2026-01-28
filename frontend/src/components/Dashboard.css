@@ -1,0 +1,213 @@
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  background: #0f172a;
+  color: white;
+  padding: 24px;
+}
+
+.brand {
+  margin-bottom: 30px;
+}
+
+.side-menu a {
+  display: block;
+  padding: 12px 0;
+  color: #cbd5f5;
+  cursor: pointer;
+}
+
+.side-menu a.active,
+.side-menu a:hover {
+  color: white;
+}
+
+/* MAIN PANEL */
+.main-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOPBAR */
+.topbar {
+  background: white;
+  padding: 14px 24px;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logout-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* CONTENT */
+.content {
+  padding: 30px;
+}
+
+/* STATS */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: white;
+  padding: 22px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.stat-card p {
+  font-size: 26px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* TABLE */
+.table-box {
+  background: white;
+  padding: 22px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.table-box table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+}
+
+.table-box th,
+.table-box td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.table-box th {
+  background: #f1f5f9;
+}
+.page-box {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.emp-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.emp-table th,
+.emp-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.delete-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.payroll-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.payroll-form label {
+  display: block;
+  margin-top: 12px;
+}
+
+.payroll-form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #cbd5f5;
+}
+
+.payslip {
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.slip-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.slip-row.total {
+  font-weight: bold;
+  font-size: 18px;
+}
+.edit-btn {
+  background: #6366f1;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 8px;
+}
+.charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.chart-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+.attendance-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.attendance-form input,
+.attendance-form select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #cbd5f5;
+}
+
+.attendance-summary {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
